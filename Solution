@@ -1,0 +1,38 @@
+    class Solution
+    {
+        public int solution(int[] A)
+        {
+            int[] PArray = A;
+            int[] QArray = A;
+            int[] RArray = A;
+            int N = A.Count();
+
+            var perimeter = -1;
+            for (int P = 0; P < N; P++ )
+            {
+                for (int Q = 0; Q < N; Q++ )
+                {
+                    if (Q == P)
+                        continue;
+                    for (int R = 0; R < N; R++ )
+                    {
+                        if (R == Q || R == P)
+                            continue;
+
+                        int p = PArray[P];
+                        int q = QArray[Q];
+                        int r = RArray[R];
+
+                        if (p + q > r && q + r > p && r + p > q)
+                        {
+                            if (p + r + q > perimeter)
+                            {
+                                perimeter = p + r + q;
+                            }
+                        }
+                    }
+                }
+            }
+            return perimeter;
+        }
+    }
